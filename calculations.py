@@ -10,11 +10,13 @@ st.title("💹 Forex, Gold & Crypto Profit Calculator")
 # -------------------
 # Inputs
 # -------------------
-col1, col2 = st.columns(2)
-with col1:
-    opening_price = st.number_input("Enter the Opening Price:", min_value=0.0)
-with col2:
-    closing_price = st.number_input("Enter the Closing Price:", min_value=0.0)
+
+cola, colb = st.columns(2)
+with cola:
+    opening_price = st.number_input("Enter the opening price:", min_value=0.0, format="%.5f")
+with colb:
+    closing_price = st.number_input("Enter the closing price:", min_value=0.0, format="%.5f")
+
 
 lot_size = st.number_input("Enter the Lot Size (standard lot = 1 = 100,000 units):", min_value=0.0, format="%.4f")
 trade_type = st.radio("Select Trade Type:", ["Buy", "Sell"])
@@ -166,3 +168,4 @@ if st.button("📊 Calculate"):
                 mid = (opening_price + closing_price) / 2.0
                 pip_value_in_quote = pip_size * units
                 st.write(f"Debug: pip_value in {pair[3:]} = {pip_value_in_quote:.6f} {pair[3:]}, mid price = {mid:.6f}, pip_value in USD = {pip_value_in_quote / mid:.6f} USD")
+
